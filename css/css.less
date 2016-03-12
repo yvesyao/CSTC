@@ -1,0 +1,396 @@
+@black: #282828;
+@darkerBlack: darken(@black, 10%);
+@blue: #60aacf;
+@darkerBlue: darken(@blue, 10%);
+@borderColor: #e2e2e2;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #f0f0f0;
+	font: 14px/1.5 'Arial','Heiti SC','SimHei','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+}
+
+img {
+	height: 100%;
+	width: 100%;
+}
+
+.pull-right {
+	float: right!important;
+}
+
+.pull-left {
+	float: left!important;
+}
+
+a {
+	color: #6f6f6f;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.clearfix {
+	*zoom: 1;
+	&:before,&:after {
+		content: '';
+		display: table;
+		line-height: 0;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1020px;
+	width: 90%;
+}
+
+.title-banner {
+	.clearfix;
+	border: 2px solid @borderColor;
+	border-left: none;
+	border-right: none;
+	color: #474747;
+	font-size: 18px;
+	line-height: 2em;
+}
+
+
+#top {
+	border-top: 6px solid @black;
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+	.tag {
+		font-size: 0;
+		margin-right: 30px;
+		padding: 0 10px 5px;
+		a {
+			border-right: 1px solid #eee;
+			color: #eee;
+			display: inline-block;
+			font-size: 14px;
+			line-height: 1em;
+			padding: 0 9px;
+			text-decoration: none;
+			&:last-child {
+				border-right: none;
+			}
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+}
+
+header {
+	.clearfix;
+	#logo {
+		width: 65px;
+	}
+	.title {
+		font-size: 38px;
+		font-weight: normal;
+		line-height: 65px;
+		margin-left: 15px;
+	}
+	.search-wrap {
+		padding-top: 19px;
+	}
+	.search {
+		border: 2px solid #424242;
+		display: block;
+		float: left;
+		padding: 8px 34px 8px 8px;
+		width: 263px;
+		&:focus {
+			border-color: @blue;
+			box-shadow: 0 0 5px @blue;
+		}
+	}
+	.search-btn {
+		background: url(../images/CSTC/glass.png) center center no-repeat transparent;
+		border: none;
+		cursor: pointer;
+		display: block;
+		float: left;
+		line-height: 35px;
+		margin-left: -30px;
+		outline: none;
+		width: 20px;
+	}
+
+	#menu {
+		.clearfix;
+		.title-banner;
+		list-style: none;
+		margin-top: 20px;
+		li {
+			display: block;
+			float: left;
+			background: url(../images/CSTC/menu-tag.png) left center no-repeat;
+			padding-left: 22px;
+			margin: 5px 0 5px 1em;
+			a {
+				color: #828282;
+				display: block;
+				font-size: 18px;
+				line-height: 30px;
+				&:hover,&.active {
+					color: @blue;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+
+#main {
+	.container {
+		.clearfix;
+		background-color: #fff;
+		border: #eee solid 1px;
+		box-shadow: 0 0 20px #aaa;
+		padding: 30px;
+	}
+	#banner {
+		margin-top: 10px;
+		.carousel {
+			position: relative;
+			>ul {
+				.clearfix;
+				height: 348px;
+				list-style: none;
+				overflow: hidden;
+				position: relative;
+				li {
+					display: block;
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					left: 100%;
+					&.active {
+						left:0;
+					}
+					&.past {
+						laft: 100%;
+					}
+					a {
+						display: block;
+						height: 100%;
+					}
+				}
+			}
+			.anchors {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+				ul {
+					list-style: none;
+					li {
+						float: left;
+						margin-right: 5px;
+						a {
+							background: url(../images/CSTC/banner-anchor.png) center center no-repeat;
+							display: block;
+							height: 23px;
+							width: 23px;
+							&.active {
+								background-image: url(../images/CSTC/banner-anchor-active.png);
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	}
+}
+.shaped {
+	position: relative;
+	*background-color: @black;
+	* {
+		position: relative;
+		z-index: 2;
+	}
+	&:before, &:after{
+		position:absolute;
+		content:"";
+		width:50%;
+		height:100%;
+		top:0;
+		background-color:@black;
+		transform-origin:0 0;
+		-webkit-transform-origin:0 0;
+		z-index: 1;
+	}
+	@radius: 5px;
+	@deg: 20deg;
+	&:before{
+		left:0;
+		border-radius:0 0 0 @radius;
+		transform:skew(@deg);
+		-webkit-transform:skew(@deg);
+	}
+	&:after{
+		right:0;
+		border-radius:0 0 @radius 0;
+		transform:skew(-@deg);
+		-webkit-transform:skew(-@deg);
+	}
+}
+
+.half {
+	float: left;
+	width: 50%;
+}
+
+.cusp {
+	position: relative;
+	text-align: center;
+	&:after {
+		background: url(../images/CSTC/cusp.png) no-repeat #fff;
+		content: '';
+		display: block;
+		height: 14px;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		margin: 0 0 -13px -12px;
+		width: 24px;
+	}
+}
+.news {
+	.half;
+	padding-top: 20px;
+	ul {
+		li {
+			background: url(../images/CSTC/news-tag.png) left center no-repeat;
+			display: block;
+			margin: 0 20px;
+			padding-left: 20px;
+			&.top {
+				background-image: url(../images/CSTC/news-tag-top.png);
+			}
+			a {
+				display: block;
+				line-height: 1.8em;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+	&:last-of-type {
+		ul {
+			border-left: 2px solid @borderColor;
+		}
+	}
+}
+
+.album {
+	@height: 190px;
+	margin-top: 20px;
+	.handler {
+		display: block;
+		height: @height;
+		width: 23px;
+		&.prev {
+			background: url(../images/CSTC/album-left.png) no-repeat;
+			float: left;
+		}
+		&.next {
+			background: url(../images/CSTC/album-right.png) no-repeat;
+			float: right;
+		}
+	}
+	.shell {
+		height: @height;
+		overflow: hidden;
+		position: relative;
+		ul {
+			display: block;
+			height: 100%;
+			list-style: none;
+			position: absolute;
+			width: 300%;
+		}
+		li {
+			display: block;
+			float: left;
+			padding: 0 2px;
+			a {
+				display: block;
+			}
+		}
+	}
+}
+
+footer {
+	.clearfix;
+	background-color: @blue;
+	border-top: 1px solid @darkerBlue;
+	color: #fff;
+	height: 138px;
+	margin-top: 20px;
+	padding-top: 30px;
+	position: relative;
+	nav {
+		border-bottom: 2px solid #fff;
+		float: left;
+		width: 50%;
+	}
+	ul {
+		display: block;
+		float: left;
+		text-align: center;
+		li {
+			float: left;
+			line-height: 40px;
+		}
+	}
+
+	@trunWidth: 50px;
+	.left {
+		padding-right: @trunWidth/2;
+		ul {
+			float: right;
+		}
+		li {
+			padding-right: 30px;
+		}
+	}
+	.right {
+		padding-left: @trunWidth/2;
+		li {
+			margin-left: 30px;
+			&:first-child {
+				padding-left: 0;
+				list-style: none;
+			}
+		}
+	}
+
+	.truncheon {
+		background: url(../images/CSTC/truncheon.png) center center no-repeat @blue;
+		height: 85px;
+		left: 50%;
+		margin-left:  -@trunWidth/2;
+		top: 30px;
+		position: absolute;
+		width: @trunWidth;
+	}
+}
